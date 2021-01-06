@@ -976,7 +976,7 @@ func (pt *partition) partsMerger(mergerFunc func(isFinal bool) error) error {
 		if !errors.Is(err, errNothingToMerge) {
 			return err
 		}
-		if fasttime.UnixTimestamp()-lastMergeTime > finalMergeDelaySeconds {
+		if finalMergeDelaySeconds > 0 && fasttime.UnixTimestamp()-lastMergeTime > finalMergeDelaySeconds {
 			// We have free time for merging into bigger parts.
 			// This should improve select performance.
 			lastMergeTime = fasttime.UnixTimestamp()
@@ -998,7 +998,7 @@ func (pt *partition) partsMerger(mergerFunc func(isFinal bool) error) error {
 	}
 }
 
-var finalMergeDelaySeconds = uint64(30)
+var finalMergeDelaySeconds = uint64(0)
 
 // SetFinalMergeDelay sets the delay before doing final merge for partitions without newly ingested data.
 //
@@ -1006,6 +1006,7 @@ var finalMergeDelaySeconds = uint64(30)
 func SetFinalMergeDelay(delay time.Duration) {
 	delaySeconds := int(delay.Seconds() + 0.5)
 	if delaySeconds <= 0 {
+		logger.Infof("Final merge is disabled.")
 		return
 	}
 	finalMergeDelaySeconds = uint64(delaySeconds)
