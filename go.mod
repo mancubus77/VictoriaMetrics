@@ -23,7 +23,7 @@ require (
 	github.com/go-kit/kit v0.12.0 // indirect
 	github.com/golang/snappy v0.0.4
 	github.com/influxdata/influxdb v1.9.5
-	github.com/klauspost/compress v1.13.6
+	github.com/klauspost/compress v1.14.2
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/prometheus/common v0.32.1 // indirect

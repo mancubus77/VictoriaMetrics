@@ -202,7 +202,7 @@ github.com/influxdata/influxdb/models
 github.com/influxdata/influxdb/pkg/escape
 # github.com/jmespath/go-jmespath v0.4.0
 github.com/jmespath/go-jmespath
-# github.com/klauspost/compress v1.13.6
+# github.com/klauspost/compress v1.14.2
 ## explicit
 github.com/klauspost/compress
 github.com/klauspost/compress/flate
